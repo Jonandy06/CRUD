@@ -50,7 +50,8 @@ function validarURL(input) {
 function validarGeneral(e) {
   // previene que recargue la pagina
   e.preventDefault();
-  console.log("desde la funcion validar general");
+  // console.log("desde la funcion validar general");
+  let alerta = document.querySelector('#msjAlerta');
   // if(true/false)
   if (
     validarCodigo(codigo) &&
@@ -59,9 +60,12 @@ function validarGeneral(e) {
     validarNumeros(cantidad) &&
     validarURL(url)
   ) {
-    console.log("aqui tengo q crear el producto");
+    // console.log("aqui tengo q crear el producto");
+    alerta.className = 'alert alert-danger mt-4 d-none';
   } else {
-    console.log("corregir datos");
+    // console.log("corregir datos");
+    // aqui quiero mostrar el alert de html
+    alerta.className = 'alert alert-danger mt-4';
   }
 }
 
