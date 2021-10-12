@@ -1,4 +1,4 @@
-function validarCampoRequerido(input) {
+export function validarCampoRequerido(input) {
   console.log(input);
   if (input.value.trim() != "") {
     // console.log('el dato es correcto');
@@ -10,7 +10,7 @@ function validarCampoRequerido(input) {
     return false;
   }
 }
-function validarCodigo(input) {
+export function validarCodigo(input) {
   // console.log(input);
   if (input.value.trim() != "" && input.value.trim().length >= 3) {
     // console.log('el dato es correcto');
@@ -23,7 +23,7 @@ function validarCodigo(input) {
   }
 }
 
-function validarNumeros(input) {
+export function validarNumeros(input) {
   // creamos la expresion regular
   let patron = /^[0-9]{1,3}$/;
   if (patron.test(input.value)) {
@@ -35,7 +35,7 @@ function validarNumeros(input) {
   }
 }
 
-function validarURL(input) {
+export function validarURL(input) {
   // crear una expresion regular
   let patron = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
   if (input.value.trim() != "" && patron.test(input.value.trim())) {
@@ -47,9 +47,8 @@ function validarURL(input) {
   }
 }
 
-function validarGeneral(e) {
-  // previene que recargue la pagina
-  e.preventDefault();
+export function validarGeneral() {
+  // previene que recargue la pagina 
   // console.log("desde la funcion validar general");
   let alerta = document.querySelector('#msjAlerta');
   // if(true/false)
@@ -62,37 +61,12 @@ function validarGeneral(e) {
   ) {
     // console.log("aqui tengo q crear el producto");
     alerta.className = 'alert alert-danger mt-4 d-none';
+    return true;
   } else {
     // console.log("corregir datos");
     // aqui quiero mostrar el alert de html
     alerta.className = 'alert alert-danger mt-4';
+    return false;
   }
 }
 
-// traer los input/texarea
-
-let codigo = document.querySelector("#codigo");
-let cantidad = document.querySelector("#cantidad");
-let url = document.querySelector("#url");
-let producto = document.querySelector("#producto");
-let descripcion = document.querySelector("#descripcion");
-let formulario = document.querySelector("#formProducto");
-// console.log(formulario)
-
-// le agremos el evento
-codigo.addEventListener("blur", () => {
-  validarCodigo(codigo);
-});
-cantidad.addEventListener("blur", () => {
-  validarNumeros(cantidad);
-});
-url.addEventListener("blur", () => {
-  validarURL(url);
-});
-producto.addEventListener("blur", () => {
-  validarCampoRequerido(producto);
-});
-descripcion.addEventListener("blur", () => {
-  validarCampoRequerido(descripcion);
-});
-formulario.addEventListener("submit", validarGeneral);
