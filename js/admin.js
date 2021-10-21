@@ -82,7 +82,11 @@ function agregarProducto() {
   // cargar el producto nuevo en la fila de la tabla
   crearFilas(productoNuevo);
   // mostrar un mensaje al usuario
-
+  Swal.fire(
+    'Producto Agredado!',
+    'Su producto fue correctamente agregado!',
+    'success'
+  )
   // mostrar el objeto en una tabla
 }
 
@@ -160,6 +164,11 @@ function actualizarProducto(){
   listoProducto.forEach((itemProducto) =>{crearFilas(itemProducto)});
   // limpiar formulario
   limpiarFormulario();
+  // mostrar mensaje al usuario
+  Swal.fire(
+    'Producto Agredado!',
+    'Su producto fue correctamente editado!',
+    'success')
 }
 
 function borrarFilas(){
@@ -168,7 +177,19 @@ function borrarFilas(){
 }
 
 window.eliminarProducto = (codigo) => {
-  console.log(codigo);
+  Swal.fire({
+    title: '¿Estas seguro de eliminar este producto?',
+    text: "Una vez eliminado el producto no se puede recuperargit!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Borrar producto!',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // agregar el codigo que borra el producto
+      console.log(codigo);
   // aqui borramos el producto dentro del arreglo
   let productosFiltrado = listoProducto.filter((itemProducto)=>{ return itemProducto.codigo != codigo});
 
@@ -180,4 +201,20 @@ window.eliminarProducto = (codigo) => {
   // dibujar nuevamente la tabla
   borrarFilas();
   listoProducto.forEach((itemProducto)=>{ crearFilas(itemProducto)})
+
+      Swal.fire(
+        'Producto eliminado!',
+        'El producto fue correctamente eliminado',
+        'success'
+      )
+    }
+  })
+
+
+
+
+
+
+
+  
 }
