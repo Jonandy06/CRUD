@@ -208,13 +208,5 @@ window.eliminarProducto = (codigo) => {
         'success'
       )
     }
-  })
-
-
-
-
-
-
-
-  
+  })  
 }
