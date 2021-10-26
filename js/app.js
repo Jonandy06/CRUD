@@ -7,8 +7,8 @@ function cargarInicial(){
     listaProducta = JSON.parse(localStorage.getItem('arregloProducto')) || [];
     // dibujar a las clumnas con sus respéctivas cards
     if(listaProducta.length >0){
-        listaProducta.foreach(itemProducto =>{crearColumna(itemProducto);
-        })
+        listaProducta.foreach(itemProducto => {crearColumna(itemProducto);
+        });
     }
 }
 
@@ -22,5 +22,5 @@ function crearColumna(producto){
           <p class="card-text">${producto.descripcion}</p>
         </div>
       </div>  
-</div>       `
+</div>`;
 }
